@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/style2.css' %}">
+    <script src="{% static 'JS/script.js' %}"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+        <h2>Hello User!</h2>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="/userProfile">Profile</a>
+            <a href="/taskAssigned">Task Assigned</a>
+            <a href="/taskCompleted">Completed Task</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="content-box">
+        {% if link == 'taskAssigned' %}
+        <div class="container taskAssigned">
+            <header>Task Assigned</header>
+            {% for app in tasks %}
+            <div class="applist">
+                <div class="appimage">
+                    <img src="{{ app.photo.url }}" alt="Profile Photo">
+                </div>
+                <div class="appname">
+                    <h2>{{ app.appname }}</h2>
+                    <a href="taskDetails/{{ app.id }}">Complete the task ></a>
+                </div>
+                <div class="apppoints">
+                    <h3>{{ app.points }} Points</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif link == 'taskCompleted' %}
+        <div class="container">
+            <header>Completed Task</header>
+            {% if completed_tasks %}
+            <table>
+                <th>S.No.</th>
+                <th>App Name</th>
+                <th>Points</th>
+                {% for task in completed_tasks %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ task.appname }}</td>
+                    <td>{{ task.points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p class="msg">Task Not Completed Yet</p>
+            {% endif %}
+        </div>
+        {% elif link == 'taskDetails' %}
+        <div class="container task-details">
+            <div class="applist">
+                <div class="appimage">
+                    <img src="{{ task.photo.url }}" alt="Profile Photo">
+                </div>
+                <div class="appname">
+                    <h2>{{ task.appname }}</h2>
+                    <a href="{{ task.applink }}"> {{ task.applink }}</a>
+                </div>
+                <div class="apppoints">
+                    <h3>{{ task.points }} Points</h3>
+                </div>
+            </div>
+            <form action="/screenShot/{{ task.id }}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Upload the Screenshot to complete the task</label>
+                <input type="file" accept="image/*" name="screenshot" class="screenshot" />
+                <input type="submit" value="Upload" class="upload">
+            </form>
+            {% if msg %}
+            <p class="msg"> {{msg}} </p>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="container">
+            <header>PROFILE</header>
+            <div class="center">
+                <img src="{% static 'images/avatar.png' %}" alt="Profile Photo">
+                <h2> {{user.username}} </h2>
+                <p>Total Points Earned: {{ total_points }} Points</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

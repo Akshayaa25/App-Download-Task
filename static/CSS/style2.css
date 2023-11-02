@@ -1,0 +1,85 @@
+/* User Dashboard */
+.taskAssigned {
+    display: flex;
+    flex-direction: column;
+}
+
+.applist {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    padding: 20px;
+    background-color: rgb(231, 231, 231);
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.appimage,
+.apppoints {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.appimage {
+    width: 20%;
+    height: 100%;
+}
+
+.appimage img {
+    width: 80px;
+    height: 80px;
+}
+
+.appname {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.apppoints {
+    width: 25%;
+    height: 100%;
+}
+
+.apppoints h3 {
+    padding: 5px 10px;
+    background-color: #77beb1;
+    border: 1px solid #009579;
+}
+
+#drop-zone {
+    border: 2px dashed #ccc;
+    width: 100%;
+    height: 200px;
+    padding: 25px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.upload {
+    color: white;
+    background: #009579;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+    padding: 3px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+
+}
+
+table,
+th,
+tr,
+td {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}

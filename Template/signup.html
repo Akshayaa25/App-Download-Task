@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/signupstyle.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <header>Signup</header>
+            {% if user == 'admin' %}
+            <form method="post" action="/adminSignup">
+            {% elif user == 'user' %}
+            <form method="post" action="/userSignup">
+            {% endif %}
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Enter your username">
+                <input type="password" name="password1" placeholder="Create a password">
+                <input type="password" name="password2" placeholder="Confirm your password">
+                {% if error %}
+                <p style="color: red;font-size: 13px;text-align: center;"> {{error}} </p>
+                {% endif %}
+                <input type="submit" class="button" value="Signup">
+            </form>
+            <div class="login">
+                Already have an account?
+                {% if user == 'admin' %}
+                <a href="/adminLogin">Login</a>
+                {% elif user == 'user' %}
+                <a href="/userLogin">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+/* Admin Dashboard */
+
+.container .input-group
+{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.imgicon,.points,.submit
+{
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+}
+
+.container input,select {
+    height: 40px;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.points input,.submit input
+{
+    width: 50%;
+}
+
+.container input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+input.button {
+    color: white;
+    background: #009579;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+input.button:hover {
+    background: #006653;
+}
+
+.container table,
+th,
+tr,
+td {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.button {
+    color: white;
+    background: #009579;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+    height: 30px;
+    width: 100%;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.view {
+    font-size: 18px;
+    height: 40px;
+    width: 350px;
+}
+
+
+

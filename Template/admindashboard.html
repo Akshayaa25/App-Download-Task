@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/style3.css' %}">
+    <script src="{% static 'JS/script.js' %}"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+        <h2>Hello Admin!</h2>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="/addApps">Add Apps</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="content-box">
+        <div class="container">
+            <header>ADD APPS</header>
+            <form action="/addApps" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group">
+                    <div class="input imgicon">
+                        <label for="photo-upload">
+                            <img src="{% static 'images/Placeholder.png' %}" id="preview-image" alt="Upload Image">
+                        </label>
+                        <input type="file" name="photo" accept="image/*" id="photo-upload" onchange="showPreview(event)" style="display: none;">
+                    </div>
+
+                    <div class="input">
+                        <input type="text" name="appname" placeholder="App Name">
+                    </div>
+
+                    <div class="input">
+                        <input type="text" name="applink" placeholder="App Link">
+                    </div>
+
+                    <div class="input">
+                        <select name="appcategory">
+                            <option>App Category</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Education">Education</option>
+                            <option value="Social Networking">Social Networking</option>
+                            <option value="Kids">Kids</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Design">Design</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                        </select>
+                    </div>
+
+                    <div class="input">
+                        <select name="subcategory">
+                            <option>Sub Category</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Music Streaming">Music Streaming</option>
+                            <option value="Video Streaming">Video Streaming</option>
+                            <option value="E-Commerce">E-Commerce</option>
+                            <option value="News">News</option>
+                            <option value="Messaging">Messaging</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Editing">Editing</option>
+                        </select>
+                    </div>
+
+                    <div class="input points">
+                        <input type="text" name="points" placeholder="Points">
+                    </div>
+
+                    <div class="input submit">
+                        <input type="submit" value="Add" class="button">
+                    </div>
+                </div>
+            </form>
+            {% if msg %}
+            <p class="msg"> {{msg}} </p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>
